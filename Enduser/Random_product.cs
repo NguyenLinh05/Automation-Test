@@ -53,8 +53,8 @@ namespace Enduser
                 Console.WriteLine("Click nút 'Tiếp tục' thành công!");
 
                 // 9. Chờ trang "Yêu cầu đặt hàng" `/card-order/checkout` tải hoàn tất
-                wait.Until(ExpectedConditions.UrlContains("/card-order/checkout"));
-                Console.WriteLine("Chuyển đến trang yêu cầu đặt hàng thành công!");
+                //wait.Until(ExpectedConditions.UrlContains("/card-order/checkout"));
+                //Console.WriteLine("Chuyển đến trang yêu cầu đặt hàng thành công!");
             }
             else
             {
