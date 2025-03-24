@@ -58,13 +58,21 @@ namespace Enduser
 
             // Click Đăng ký
             wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("button[nztype='primary']"))).Click();
-            Console.WriteLine("✅ Click Đăng ký thành công");
+            Console.WriteLine("Click Đăng ký thành công");
             Thread.Sleep(10000);
 
             // Chờ popup OTP hiển thị
             WaitForOTPPopup(driver);
-            Thread.Sleep(10000);
+            Thread.Sleep(1000);
 
+            // Đăng nhập vào hệ thống
+            InputText("//input[@formcontrolname='username']", randomUsername);
+            Console.WriteLine($"Nhập username: {randomUsername}");
+            InputText("//input[@formcontrolname='password']", randomPassword);
+            Console.WriteLine($"Nhập pass: {randomPassword}");
+            driver.FindElement(By.CssSelector("button[nztype='primary']")).Click();
+            Console.WriteLine("Đăng nhập thành công");
+            Thread.Sleep(5000);
         }
 
         [TearDown]
@@ -72,6 +80,13 @@ namespace Enduser
         {
             //Thread.Sleep(5000);
             driver.Quit();
+        }
+        //Hàm nhập login
+        public void InputText(string xpath, string text)
+        {
+            IWebElement element = driver.FindElement(By.XPath(xpath));
+            element.Clear();  // Xóa nội dung trước đó (nếu có)
+            element.SendKeys(text);
         }
 
         // Hàm nhập dữ liệu vào input field
@@ -86,10 +101,29 @@ namespace Enduser
         // Hàm tạo mật khẩu ngẫu nhiên
         private string GenerateRandomPassword(int length)
         {
-            const string chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            if (length < 2) length = 2; // Đảm bảo có ít nhất 2 ký tự
+
+            const string letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            const string numbers = "0123456789";
+            const string allChars = letters + numbers;
             Random random = new Random();
-            return new string(Enumerable.Repeat(chars, length)
-                                        .Select(s => s[random.Next(s.Length)]).ToArray());
+
+            // Đảm bảo có ít nhất 1 chữ và 1 số
+            char letter = letters[random.Next(letters.Length)];
+            char number = numbers[random.Next(numbers.Length)];
+
+            // Tạo các ký tự ngẫu nhiên còn lại
+            char[] password = new char[length];
+            password[0] = letter;
+            password[1] = number;
+
+            for (int i = 2; i < length; i++)
+            {
+                password[i] = allChars[random.Next(allChars.Length)];
+            }
+
+            // Trộn mật khẩu để không có thứ tự cố định
+            return new string(password.OrderBy(x => random.Next()).ToArray());
         }
 
         // Hàm chờ popup OTP hiển thị
@@ -101,7 +135,7 @@ namespace Enduser
             var otpPopups = driver.FindElements(By.XPath("//div[@role='document']"));
             if (otpPopups.Count > 0)
             {
-                Console.WriteLine("✅ Popup xác thực email đã hiển thị!");
+                Console.WriteLine("Popup xác thực email đã hiển thị!");
 
                 // Tìm nút đóng trong popup
                 var closeButtons = driver.FindElements(By.XPath("//div[@role='document']//button[@aria-label='Close']"));
@@ -115,20 +149,17 @@ namespace Enduser
 
                     // Click bằng JavaScript nếu click thông thường không hoạt động
                     ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", closeButton);
-                    Console.WriteLine("✅ Đã đóng popup xác thực email!");
+                    Console.WriteLine("Đã đóng popup xác thực email!");
                 }
                 else
                 {
-                    Console.WriteLine("❌ Không tìm thấy nút đóng popup!");
+                    Console.WriteLine("Không tìm thấy nút đóng popup!");
                 }
             }
             else
             {
-                Console.WriteLine("❌ Không tìm thấy popup xác thực email!");
+                Console.WriteLine("Không tìm thấy popup xác thực email!");
             }
         }
-
-
-
     }
 }
