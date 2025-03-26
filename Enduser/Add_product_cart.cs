@@ -73,7 +73,8 @@ namespace Enduser
                 addNewAddressButton.Click();
                 Console.WriteLine("Click vào 'Thêm địa chỉ nhận hàng' thành công!");
 
-                Random_address.Select(driver);//Them moi dia chi chon random
+                Random_address random_Add = new Random_address();
+                random_Add.Select(driver);//Them moi dia chi chon random
             }
 
             // Chọn địa chỉ nhận hàng

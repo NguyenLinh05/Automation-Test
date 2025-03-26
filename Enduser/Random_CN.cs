@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Enduser
 {
-    public class Random_address
+    public class Random_CN
     {
-        public void Select(IWebDriver driver)
+        public void randomIndividual(IWebDriver driver)
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
             //Random thông tin 
@@ -22,22 +22,22 @@ namespace Enduser
 
             // Nhập thông tin địa chỉ 
             //A. Nhập thông tin họ tên
-            IWebElement nameField = driver.FindElement(By.XPath("//input[@formcontrolname='name']"));
+            IWebElement nameField = driver.FindElement(By.XPath("//input[@formcontrolname='fullname']"));
             nameField.Clear();
             nameField.SendKeys(randomName);
-            Console.WriteLine($"Nhập Họ và Tên: {randomName}");
-
-            //B. Nhập thông tin Số điện thoại
-            IWebElement phoneField = driver.FindElement(By.XPath("//input[@formcontrolname='phoneNumber']"));
-            phoneField.Clear();
-            phoneField.SendKeys(randomPhone);
-            Console.WriteLine($"Nhập Số điện thoại: {randomPhone}");
-
+            Console.WriteLine($"Nhập tên khách hàng: {randomName}");
+            
             //C. Nhập thông tin email
             IWebElement emailField = driver.FindElement(By.XPath("//input[@formcontrolname='email']"));
             emailField.Clear();
             emailField.SendKeys(randomEmail);
             Console.WriteLine($"Nhập Email: {randomEmail}");
+
+            //B. Nhập thông tin Số điện thoại
+            IWebElement phoneField = driver.FindElement(By.XPath("//input[@formcontrolname='mobile']"));
+            phoneField.Clear();
+            phoneField.SendKeys(randomPhone);
+            Console.WriteLine($"Nhập Số điện thoại: {randomPhone}");
 
             //D. Chọn địa chỉ
             //D1. Chọn tỉnh
@@ -97,7 +97,7 @@ namespace Enduser
             Thread.Sleep(2000);
 
             // Click lưu
-            wait.Until(d => d.FindElement(By.XPath("//button[span[contains(text(), 'Lưu')]]"))).Click();
+            wait.Until(d => d.FindElement(By.XPath("//button[contains(text(), 'Lưu')]"))).Click();
             Console.WriteLine("Lưu địa chỉ thành công");
         }
     }

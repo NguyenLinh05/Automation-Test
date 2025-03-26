@@ -37,8 +37,22 @@ namespace Enduser
                 Random random = new Random();
                 int randomIndex = random.Next(0, products.Count);
 
+                IWebElement selectedProduct = products[randomIndex];
+
+                // Lấy tên sản phẩm
+                try
+                {
+                    IWebElement productNameElement = selectedProduct.FindElement(By.XPath(".//div[contains(@class, 'line-clamp-2')]/span"));
+                    string productName = productNameElement.Text.Trim();
+                    Console.WriteLine($"Chọn sản phẩm: {productName}");
+                }
+                catch (NoSuchElementException)
+                {
+                    Console.WriteLine("Không lấy được tên sản phẩm!");
+                }
+
                 // Click vào sản phẩm được chọn ngẫu nhiên
-                products[randomIndex].Click();
+                selectedProduct.Click();
 
                 Console.WriteLine($"Chọn sản phẩm thứ {randomIndex + 1} thành công!");
                 // 7. Chờ trang chuyển đến chi tiết sản phẩm `/card-order/details/{id}`
@@ -46,15 +60,6 @@ namespace Enduser
                 driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(20);
                 Console.WriteLine("Chuyển đến trang chi tiết sản phẩm thành công!");
                 driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(50);
-
-                //8. Click tiếp tục để chuyển sang trang yêu cầu đặt hàng
-                IWebElement continueButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[span[contains(text(), 'Tiếp tục')]]")));
-                continueButton.Click();
-                Console.WriteLine("Click nút 'Tiếp tục' thành công!");
-
-                // 9. Chờ trang "Yêu cầu đặt hàng" `/card-order/checkout` tải hoàn tất
-                //wait.Until(ExpectedConditions.UrlContains("/card-order/checkout"));
-                //Console.WriteLine("Chuyển đến trang yêu cầu đặt hàng thành công!");
             }
             else
             {

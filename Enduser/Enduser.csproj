@@ -133,14 +133,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Add_product_cart.cs" />
+    <Compile Include="ChoosePay.cs" />
+    <Compile Include="Choose_address_end.cs" />
     <Compile Include="Choose_product.cs" />
+    <Compile Include="Choose_address.cs" />
+    <Compile Include="CTV_order.cs" />
     <Compile Include="Login.cs" />
-    <Compile Include="Order_choose_voucher.cs" />
+    <Compile Include="Order.cs" />
+    <Compile Include="Random_CN.cs" />
+    <Compile Include="Random_DN.cs" />
     <Compile Include="Random_product.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Random_address.cs" />
+    <Compile Include="Register_Contributors.cs" />
     <Compile Include="Select_voucher.cs" />
+    <Compile Include="Signup.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

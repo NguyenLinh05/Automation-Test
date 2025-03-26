@@ -9,38 +9,41 @@ using System.Threading.Tasks;
 
 namespace Enduser
 {
-    public class Random_address
+    public class Random_DN
     {
-        public void Select(IWebDriver driver)
+        public void randomBusiness (IWebDriver driver)
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
             //Random thông tin 
             Random random = new Random();
             string randomName = "Test User " + random.Next(1000, 9999);
-            string randomPhone = "01" + random.Next(10000000, 99999999);
             string randomEmail = "test" + random.Next(1000, 9999) + "@gmail.com";
+            string randomCode = "01" + random.Next(10000000, 99999999);
+            string randomPhone = "01" + random.Next(10000000, 99999999);
 
-            // Nhập thông tin địa chỉ 
-            //A. Nhập thông tin họ tên
-            IWebElement nameField = driver.FindElement(By.XPath("//input[@formcontrolname='name']"));
-            nameField.Clear();
-            nameField.SendKeys(randomName);
-            Console.WriteLine($"Nhập Họ và Tên: {randomName}");
+            IWebElement name = driver.FindElement(By.XPath("//input[@formcontrolname='fullname']"));
+            name.SendKeys(randomName);
+            Console.WriteLine($"Nhập tên khách hàng: {randomName}");
 
-            //B. Nhập thông tin Số điện thoại
-            IWebElement phoneField = driver.FindElement(By.XPath("//input[@formcontrolname='phoneNumber']"));
-            phoneField.Clear();
-            phoneField.SendKeys(randomPhone);
-            Console.WriteLine($"Nhập Số điện thoại: {randomPhone}");
+            IWebElement email = driver.FindElement(By.XPath("//input[@formcontrolname='email']"));
+            email.SendKeys(randomEmail);
+            Console.WriteLine($"Nhập email: {randomEmail}");
 
-            //C. Nhập thông tin email
-            IWebElement emailField = driver.FindElement(By.XPath("//input[@formcontrolname='email']"));
-            emailField.Clear();
-            emailField.SendKeys(randomEmail);
-            Console.WriteLine($"Nhập Email: {randomEmail}");
+            IWebElement contactPerson = driver.FindElement(By.XPath("//input[@formcontrolname='contactPerson']"));
+            contactPerson.SendKeys(randomName);
+            Console.WriteLine($"Nhập người liên hệ: {randomName}");
 
-            //D. Chọn địa chỉ
-            //D1. Chọn tỉnh
+            driver.FindElement(By.XPath("//input[@formcontrolname='position']")).SendKeys("Nhân viên");
+            Console.WriteLine("Nhập chức vụ: nhân viên");
+
+            IWebElement taxCode = driver.FindElement(By.XPath("//input[@formcontrolname='taxCode']"));
+            taxCode.SendKeys(randomCode);
+            Console.WriteLine($"Nhập mã số thuế: {randomCode}");
+
+            IWebElement mobile = driver.FindElement(By.XPath("//input[@formcontrolname='mobile']"));
+            mobile.SendKeys(randomPhone);
+            Console.WriteLine($"Nhập SĐT: {randomPhone}");
+
             IWebElement provinceDropdown = driver.FindElement(By.XPath("//nz-select[@formcontrolname='province']"));
             provinceDropdown.Click();
             Thread.Sleep(1000); // Đợi menu xổ xuống
@@ -96,8 +99,7 @@ namespace Enduser
             }
             Thread.Sleep(2000);
 
-            // Click lưu
-            wait.Until(d => d.FindElement(By.XPath("//button[span[contains(text(), 'Lưu')]]"))).Click();
+            wait.Until(d => d.FindElement(By.XPath("//button[contains(text(), 'Lưu')]"))).Click();
             Console.WriteLine("Lưu địa chỉ thành công");
         }
     }
