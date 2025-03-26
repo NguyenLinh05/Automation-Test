@@ -18,7 +18,7 @@ namespace Enduser
         [SetUp]
         public void SetupTest()
         {
-            driver = new ChromeDriver("E:\\chromedriver-win64");
+            driver = new ChromeDriver(EnvConfig.ChromeDriverPath);
             driver.Manage().Window.Maximize();
         }
 
@@ -88,7 +88,7 @@ namespace Enduser
             Thread.Sleep(2000);
 
             //Quay lại trang chủ
-            IWebElement logo = driver.FindElement(By.XPath("//div[@class='cursor-pointer ng-tns-c183-1 ng-star-inserted']/img"));
+            IWebElement logo = driver.FindElement(By.XPath("//div[contains(@class, 'cursor-pointer')]/img[contains(@class, 'h-6') and contains(@class, 'pl-6') and contains(@class, 'scale-[160%]')]"));
             logo.Click();
             Console.WriteLine("Chuyển về trang chủ thành công");
             Thread.Sleep(1000);

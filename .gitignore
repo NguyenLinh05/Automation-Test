@@ -370,5 +370,5 @@ history
 # JetBrains Rider
 .sln.iml
 
-./bin
-./vs
+.bin/
+.vs/
