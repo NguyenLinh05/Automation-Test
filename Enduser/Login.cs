@@ -28,8 +28,9 @@ namespace Enduser
             //Đăng nhập 
             Thread.Sleep(2000);
             driver.FindElement(By.XPath("//input[@formcontrolname='username']")).SendKeys("testhh02");
+            Thread.Sleep(1000);
             driver.FindElement(By.XPath("//input[@formcontrolname='password']")).SendKeys("Abc@123");
-
+            Thread.Sleep(1000);
             driver.FindElement(By.CssSelector("button[nztype='primary']")).Click();
         }
     }

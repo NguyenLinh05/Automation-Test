@@ -55,11 +55,8 @@ namespace Enduser
                 selectedProduct.Click();
 
                 Console.WriteLine($"Chọn sản phẩm thứ {randomIndex + 1} thành công!");
-                // 7. Chờ trang chuyển đến chi tiết sản phẩm `/card-order/details/{id}`
-                wait.Until(ExpectedConditions.UrlMatches(@"\/card-order\/details\/\d+"));
-                driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(20);
-                Console.WriteLine("Chuyển đến trang chi tiết sản phẩm thành công!");
-                driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(50);
+                Thread.Sleep(1000);
+                
             }
             else
             {

@@ -11,7 +11,7 @@ namespace Enduser
             Env.Load();
         }
 
-        public static readonly string ChromeDriverPath = GetEnv("CHROME_DRIVER_PATH", "D:\\Softwares\\chromedriver-win64");
+        public static readonly string ChromeDriverPath = GetEnv("CHROME_DRIVER_PATH", "E:\\chromedriver-win64");
 
         private static string GetEnv(string key, string defaultValue)
         {

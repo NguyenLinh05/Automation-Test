@@ -43,6 +43,7 @@ namespace Enduser
             // Chờ trang "Yêu cầu đặt hàng" tải hoàn tất
             wait.Until(ExpectedConditions.UrlContains("/card-order/checkout"));
             Console.WriteLine("Chuyển đến trang yêu cầu đặt hàng thành công!");
+            Thread.Sleep(1000);
 
             // Kiểm tra xem có nút "Thêm địa chỉ nhận hàng" hoặc "Thiết lập" không
             //bool hasAddAddressButton = driver.FindElements(By.XPath("//div[span[contains(text(), 'Thêm địa chỉ nhận hàng')]]")).Count > 0;
@@ -122,7 +123,7 @@ namespace Enduser
             // 4. In mã đơn hàng ra Console
             Console.WriteLine("---Thông tin đơn hàng---");
             Console.WriteLine($"Mã đơn hàng: {orderC}");
-            Thread.Sleep(2000);
+            Thread.Sleep(1000);
         }
 
         [TearDown]
