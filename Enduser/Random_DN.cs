@@ -19,7 +19,7 @@ namespace Enduser
             string randomName = "Test User " + random.Next(1000, 9999);
             string randomEmail = "test" + random.Next(1000, 9999) + "@gmail.com";
             string randomCode = "01" + random.Next(10000000, 99999999);
-            string randomPhone = "01" + random.Next(10000000, 99999999);
+            string randomPhone = "033" + random.Next(0000000, 9999999);
 
             IWebElement name = driver.FindElement(By.XPath("//input[@formcontrolname='fullname']"));
             name.SendKeys(randomName);

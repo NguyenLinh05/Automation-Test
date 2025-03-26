@@ -17,7 +17,7 @@ namespace Enduser
             //Random thông tin 
             Random random = new Random();
             string randomName = "Test User " + random.Next(1000, 9999);
-            string randomPhone = "01" + random.Next(10000000, 99999999);
+            string randomPhone = "033" + random.Next(0000000, 9999999);
             string randomEmail = "test" + random.Next(1000, 9999) + "@gmail.com";
 
             // Nhập thông tin địa chỉ 
