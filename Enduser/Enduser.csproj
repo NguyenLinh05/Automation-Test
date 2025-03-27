@@ -276,6 +276,7 @@
     <Compile Include="Add_product_cart.cs" />
     <Compile Include="ChoosePay.cs" />
     <Compile Include="Choose_address_end.cs" />
+    <Compile Include="Choose_address_first.cs" />
     <Compile Include="Choose_product.cs" />
     <Compile Include="Choose_address.cs" />
     <Compile Include="CTV_order.cs" />

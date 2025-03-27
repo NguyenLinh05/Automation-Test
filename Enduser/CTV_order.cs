@@ -94,7 +94,7 @@ namespace Enduser
             }
             Thread.Sleep(2000);
 
-            Choose_address_end choose = new Choose_address_end();
+            Choose_address_first choose = new Choose_address_first();
             choose.AddressEnd(driver);
             Thread.Sleep(2000);
 

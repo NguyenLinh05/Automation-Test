@@ -36,7 +36,7 @@ namespace Enduser
             string randomUsername = "Test" + random.Next(100, 999);
             string randomHoten = "Nguyễn " + random.Next(10, 99);
             string randomEmail = "mai" + random.Next(100, 999) + "@gmail.com";
-            string randomSDT = "033" + random.Next(0000000, 9999999);
+            string randomSDT = "309" + random.Next(0000000, 9999999);
             string randomPassword = GenerateRandomPassword(12);
 
             // Nhập thông tin

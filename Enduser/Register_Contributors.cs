@@ -53,13 +53,19 @@ namespace Enduser
                 IWebElement saveButton = driver.FindElement(By.XPath("//button[span[contains(text(), 'Lưu thay đổi')]]"));
                 saveButton.Click();
                 Console.WriteLine("Đăng ký thành công");
-                Thread.Sleep(1000); 
+                Thread.Sleep(1000);
+                IWebElement orderButton = driver.FindElement(By.XPath("//div[span[contains(text(), 'Xem lại thông tin đã đăng ký')]]"));
+                orderButton.Click();
+                Thread.Sleep(1000);
 
             }
             catch (NoSuchElementException)
             {
                 // 3. Nếu không tìm thấy button, in ra console và kết thúc chương trình
-                Console.WriteLine("Không tìm thấy button 'Đăng ký ngay'. Kết thúc chương trình.");
+                Console.WriteLine("Không tìm thấy button 'Đăng ký ngay'");
+                IWebElement orderButton = driver.FindElement(By.XPath("//div[span[contains(text(), 'Xem lại thông tin đã đăng ký')]]"));
+                orderButton.Click();
+                Thread.Sleep(1000);
                 driver.Quit(); // Đóng trình duyệt
             }
 

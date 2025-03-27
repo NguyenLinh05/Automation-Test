@@ -27,9 +27,9 @@ namespace Enduser
             driver.Navigate().GoToUrl("https://democtv.trueconnect.vn/auth/login");
             //Đăng nhập 
             Thread.Sleep(2000);
-            driver.FindElement(By.XPath("//input[@formcontrolname='username']")).SendKeys("testhh02");
+            driver.FindElement(By.XPath("//input[@formcontrolname='username']")).SendKeys("test02");
             Thread.Sleep(1000);
-            driver.FindElement(By.XPath("//input[@formcontrolname='password']")).SendKeys("Abc@123");
+            driver.FindElement(By.XPath("//input[@formcontrolname='password']")).SendKeys("default_password_zalo");
             Thread.Sleep(1000);
             driver.FindElement(By.CssSelector("button[nztype='primary']")).Click();
         }
